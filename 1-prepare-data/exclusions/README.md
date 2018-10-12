@@ -17,7 +17,7 @@ module add languages/R-3.3.1-ATLAS
 Rscript processUKBQCFile.r
 ```
 
-## 2. Create a new genetic score data file with only the participants included in our sample
+## 2. Create a new genetic instrument data file with only the participants included in our sample
 
 This code removes all participants with genetic data not passing QC (i.e. they are in one of the subsets generated in step 1), or who have withdrawn their consent.
 

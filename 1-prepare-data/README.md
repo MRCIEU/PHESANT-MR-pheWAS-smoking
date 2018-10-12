@@ -1,9 +1,9 @@
 
-# SNP pre-processing and creating a genetic score
+# SNP pre-processing to create genetic instrument
 
-The code in this directory extracts SNPs from the UK Biobank genetic data and then uses these to generate a genetic score (weighted by the effect size of each SNP on BMI)
+The code in this directory extracts SNP from the UK Biobank genetic data.
 
-After the following steps, the file `snp-score96-withPhenIds-subset.csv` contains the genetic risk score for the participants included in our sample (after QC).
+After the following steps, the file `snp-withPhenIds-subset.csv` contains the genetic instrument for the participants included in our sample (after QC).
 
 ## 1. Retrieve the correct SNP from Biobank main data
 
@@ -71,15 +71,14 @@ See `make-subsamples` directory.
 ## 7. Remove intermediate files
 
 ```bash
-snpDir="${HOME}/2016-biobank-mr-phewas-bmi/data/sample500/snps/"
-rm ${snpDir}snp-score96.txt
+snpDir="${HOME}/2017-PHESANT-smoking-interaction/data/snp/"
 rm ${snpDir}snps-all-expected2.txt
 rm ${snpDir}snps-all-expected.txt
 rm ${snpDir}snp-data.txt
 rm ${snpDir}snp-names.txt
 rm ${snpDir}userIds.txt
 rm ${snpDir}snps-all-expected2-transposed.txt
-rm ${snpDir}snp-score96-withPhenIds.csv
+rm ${snpDir}snp-withPhenIds.csv
 ```
 
 
