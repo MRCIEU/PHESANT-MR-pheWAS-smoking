@@ -80,7 +80,7 @@
 
 	###
 	### FDR threshold
-	threshold=-log10(0.05*12/18000)
+	threshold=-log10(0.05*12/16683)
 	# horizontal threshold line, dashed green
         segments(0, threshold, xmax, threshold, col='#800000',lty=4)
 
