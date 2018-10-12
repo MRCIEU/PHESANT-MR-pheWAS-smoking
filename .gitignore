@@ -1,0 +1,4 @@
+out*
+error*
+j*.sh.e*
+*.log
