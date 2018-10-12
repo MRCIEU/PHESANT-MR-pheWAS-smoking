@@ -12,7 +12,7 @@ We perform 3 MR-pheWAS in:
 
 This repository accompanies the paper:
 
-Millard, LAC, et al. MR-pheWAS with stratification and interaction: Searching for the causal effects of smoking heaviness identified an effect on facial aging. bioRxiv (2017).
+Millard, LAC, et al. MR-pheWAS with stratification and interaction: Searching for the causal effects of smoking heaviness identified an effect on facial aging. bioRxiv (2018).
 
 ## Environment details
 
