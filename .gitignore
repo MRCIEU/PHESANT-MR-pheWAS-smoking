@@ -3,8 +3,11 @@
 
 # common data file formats
 *.csv
+*.tsv
 *.dta
 *.txt
+*.dat
+*.[rR]data
 
 # genetic data file formats
 *.bgen
@@ -22,3 +25,4 @@ j*.sh.e*
 *.enc_ukb
 *.enc
 *.cwa
+
