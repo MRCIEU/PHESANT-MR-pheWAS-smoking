@@ -12,10 +12,10 @@ module add languages/R-3.3.1-ATLAS
 date
 
 dataDir="${HOME}/2017-PHESANT-smoking-interaction/data/"
-resultsDir="${HOME}/2017-PHESANT-smoking-interaction/results/results-21753/results-main-all/"
+resultsDir="${HOME}/2017-PHESANT-smoking-interaction/results/results-21753/results-main-all-PHESANTv0_17/"
 
-codeDir="${PHESANT}/WAS/"
-varListDir="${PHESANT}/variable-info/"
+codeDir="${PHESANTv0_17}/WAS/"
+varListDir="${PHESANTv0_17}/variable-info/"
 
 outcomeFile="${dataDir}phenotypes/derived/data.21753-phesant_header.csv"
 expFile="${dataDir}snp/snp-withPhenIds-subset.csv"

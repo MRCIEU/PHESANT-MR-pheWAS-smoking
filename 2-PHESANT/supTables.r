@@ -2,9 +2,9 @@
 resdir=paste(Sys.getenv('RES_DIR'), '/results-21753',sep='')
 
 
-resDirSubEver=paste(resdir,"/results-main-ever/",sep='')
-resDirSubNever=paste(resdir,"/results-main-never/", sep='')
-resDirAll=paste(resdir,"/results-main-all/", sep='')
+resDirSubEver=paste(resdir,"/results-main-ever-PHESANTv0_17-fromsaved/",sep='')
+resDirSubNever=paste(resdir,"/results-main-never-PHESANTv0_17-fromsaved/", sep='')
+resDirAll=paste(resdir,"/results-main-all-PHESANTv0_17-fromsaved/", sep='')
 
 
 ##
@@ -19,8 +19,16 @@ resAll = read.table(paste(resDirAll, 'results-combined.txt', sep=''), header=1, 
 ## keep only the columns we need
 
 resEver = resEver[,c("varName", "description", "resType", "beta", "lower", "upper", "pvalue")]
+resEver$varName = gsub("X","",resEver$varName)
+resEver$varName = gsub(".","#",resEver$varName, fixed=TRUE)
+
 resNever = resNever[,c("varName", "resType", "beta", "lower", "upper", "pvalue")]
+resNever$varName = gsub("X","",resNever$varName)
+resNever$varName = gsub(".","#",resNever$varName, fixed=TRUE)
+
 resAll = resAll[,c("varName", "resType", "beta", "lower", "upper", "pvalue")]
+resAll$varName = gsub("X","",resAll$varName)
+resAll$varName = gsub(".","#",resAll$varName, fixed=TRUE)
 
 
 resEver$varName = gsub('-.+', '', resEver$varName)
@@ -60,6 +68,8 @@ res = merge(res, resAll, by="varName", all=TRUE)
 res$description = gsub(",","",res$description)
 
 
+print(head(res))
+
 res$assocEver=""
 i = which(!is.na(res$betaever))
 res$assocEver[i] = paste(format(round(res$betaever[i],3), nsmall=3, scientific=FALSE, trim=TRUE, width=0), ' [', format(round(res$lowerever[i],3), nsmall=3, scientific=FALSE, trim=TRUE, width=0), ', ', format(round(res$upperever[i],3), nsmall=3, scientific=FALSE, trim=TRUE, width=0), ']', sep="")
@@ -79,7 +89,7 @@ res$assocAll[i] = paste(format(round(res$betaall[i],3), nsmall=3, scientific=FAL
 
 res$topever = FALSE
 res = res[order(res$pvalueever),]
-res$topever[1:70] = TRUE
+res$topever[1:69] = TRUE
 
 res$topnever = FALSE
 res = res[order(res$pvaluenever),]
@@ -87,7 +97,7 @@ res$topnever[1:8] = TRUE
 
 res$topall = FALSE
 res = res[order(res$pvalueall),]
-res$topall[1:47] = TRUE
+res$topall[1:48] = TRUE
 
 print("Number for supplementary venn diagram")
 
@@ -114,6 +124,8 @@ print(paste("EVER and not NEVER and not ALL:", num))
 
 
 
+print("#################################")
+print('Interaction results')
 resInteraction = c("20150", "20154", "3063", "1180", "30030","30000","30140","30020","22130", "41204#J439", "40011#8071", "1757")
 print(res[which(res$varName %in% resInteraction),c("varName", "topever", "topnever", "topall")])
 
@@ -136,7 +148,7 @@ everfile=paste(resdir, '/sup-ever.txt', sep='')
 sink(everfile)
 sink()
 
-for (i in 1:70) {
+for (i in 1:69) {
 
 	# only include never results if type of regression is the same as ever test
 	assocNever = ''
@@ -194,7 +206,8 @@ allfile=paste(resdir, '/sup-all.txt', sep='')
 sink(allfile)
 sink()
 
-for (i in 1:47) {
+
+for (i in 1:48) {
 
         # only include ever results if type of regression is the same as 'all' test
         assocEver = 'X'
@@ -220,6 +233,9 @@ for (i in 1:47) {
 # add interaction pvalue to results
 resDirI=paste(resdir,"/results-by-interaction-pvalue/", sep='')
 resI = read.table(paste(resDirI, 'results-combinedI-all.csv', sep=''), header=1, sep=',', comment.char='', quote='')
+resI$varname = gsub("X","",resI$varname)
+resI$varname = gsub(".","#",resI$varname, fixed=TRUE)
+
 
 print(head(resI))
 resI = resI[,c("varname", "ipvalue")]

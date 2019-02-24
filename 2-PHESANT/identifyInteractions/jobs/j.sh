@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l walltime=60:00:00,nodes=1:ppn=1
+#PBS -l walltime=6:00:00,nodes=1:ppn=1
 #PBS -o output
 #PBS -e errors
 #PBS -t 1-19

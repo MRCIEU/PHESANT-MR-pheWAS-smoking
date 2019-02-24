@@ -1,9 +1,9 @@
 
 resdir=paste(Sys.getenv('RES_DIR'),'/results-21753',sep='')
 
-resDirSubEver=paste(resdir,"/results-main-ever/",sep='')
-resDirSubNever=paste(resdir,"/results-main-never/", sep='')
-resDirAll=paste(resdir,"/results-main-all/", sep='')
+resDirSubEver=paste(resdir,"/results-main-ever-PHESANTv0_17-fromsaved/",sep='')
+resDirSubNever=paste(resdir,"/results-main-never-PHESANTv0_17-fromsaved/", sep='')
+resDirAll=paste(resdir,"/results-main-all-PHESANTv0_17-fromsaved/", sep='')
 
 
 ##

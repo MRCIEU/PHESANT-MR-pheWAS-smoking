@@ -6,7 +6,7 @@ module add languages/R-3.3.1-ATLAS
 dir="${PHESANT}/resultsProcessing/"
 
 # directory with PHESANT results
-resDir="${RES_DIR}/results-21753/results-main-ever/"
+resDir="${RES_DIR}/results-21753/results-main-ever-PHESANTv0_17-fromsaved/"
 
 outcomeInfo="${PHESANT}/variable-info/outcome-info.tsv"
 

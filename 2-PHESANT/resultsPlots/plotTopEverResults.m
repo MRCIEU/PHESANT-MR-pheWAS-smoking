@@ -10,11 +10,10 @@ x = x(sx,:);
 %%%%%
 %%%%% keep only results passing 5% FDR threshold
 
-thresh_fdr = 0.05*70/18514;
+thresh_fdr = 0.05*69/18513;
 
 ix = find(x.pvalueever < thresh_fdr);
 x = x(ix,:);
-
 
 
 %%%%%
@@ -38,14 +37,19 @@ dc_dir=strcat(phesantDir, '/ukb_data_codes/data_codes/');
 %%
 %% for each cat mult result - find data code and add value to description
 
-ix = find(cellfun('length',regexp(x.varName,'#')) == 1);
+x.varName = strrep(x.varName, 'X', '');
+x.varName = strrep(x.varName, '.', '#');
+
+x.varName
+
+ix = find(cellfun('length',regexp(x.varName,'\.')) == 1);
 
 if 0
 for i=1:length(ix)
 	idx = ix(i);
 
 	% get field id and field value
-	c = strsplit(char(x.varName(idx)), '#');
+	c = strsplit(char(x.varName(idx)), '.');
 	fieldID=c(1);
 	fieldValue=c(2);
 
@@ -93,16 +97,21 @@ x.varLabel = strrep(x.varLabel, '"','');
 %%
 %% general plotting settings
 
-colorx = {'[1.0 0.6 0.0]';'[0.5 0.8 0.0]';'[0.8 0.2 0.2]'};
+colorx = {'[1.0 0.6 0.0]';'[0.5 0.8 0.0]';'[0.5 0 0.5]'};
 markersx = {'o';'*';'s';};
 markersizex = 10;
-fontsizex = 8;
+fontsizex = 10;
 
 
 %%%%%
 %%%%% linear results
 
 rx = 'LINEAR'
+
+% different / no result in never smokers 
+ix = find(strcmp(x.restypenever, rx)~=1 & strcmp(x.restypeever, rx)==1);
+x(ix,:)
+
 %ix = find(strcmp(x.restypenever, rx)==1 & strcmp(x.restypeever, rx)==1 & (x.lowernever > x.upperever | x.lowerever > x.uppernever));
 ix = find(strcmp(x.restypenever, rx)==1 & strcmp(x.restypeever, rx)==1);
 
@@ -111,11 +120,13 @@ res
 
 h=figure('units','inches','position',[.1 .1 10 8]); %4.8]);
 plot([0 size(res,1)+1], [0 0], '--', 'color', 'black');
+ax = gca;
+ax.FontSize=fontsizex;
 xlim([0 size(res,1)+1]);
-set(gca,'XTick',[1:size(res,1)]+0.2);
-set(gca,'XTickLabel',res.varLabel);
-set(gca,'fontsize',fontsizex);
-rotateXLabels(gca, 65);
+xticklabels(res.varLabel); 
+xticks([1:size(res,1)]+0.3);
+xtickangle(55);
+
 xlabel('Field');
 ylabel('Difference in field (SD)');
 
@@ -151,9 +162,14 @@ saveas(h, strcat(resDir, '/figure-interactions-linear.pdf'));
 %%%%% binary results
 
 rx = 'LOGISTIC-BINARY'
-ix = find(strcmp(x.restypenever, rx)==1 & strcmp(x.restypeever, rx)==1);
 
+% different / no result in never smokers 
+ix = find(strcmp(x.restypenever, rx)~=1 & strcmp(x.restypeever, rx)==1);
+x(ix,:) 
+
+ix = find(strcmp(x.restypenever, rx)==1 & strcmp(x.restypeever, rx)==1);
 res = x(ix,:);
+res
 
 for i=1:size(res,1)
         minx = min(length(res.varLabel{i}), 70);
@@ -164,11 +180,14 @@ res
 
 h=figure();
 plot([0 size(res,1)+1], [0 0], '--', 'color', 'black');
+ax = gca;
+ax.FontSize=18;
 xlim([0 size(res,1)+1]);
-set(gca,'XTick',[1:size(res,1)]+0.3);
-set(gca,'XTickLabel', res.varLabel);
-set(gca,'fontsize',fontsizex);
-rotateXLabels(gca, 55);
+ylim([-1 2]);
+xticklabels(res.varLabel);
+xticks([1:size(res,1)]+0.3);
+xtickangle(55);
+
 xlabel('Field');
 ylabel('Log odds');
 
@@ -189,12 +208,11 @@ for i=1:size(res,1)
 end
 
 
-ylim([-1.5 2]);
-
 legend([p1 p2], 'Ever', 'Never', 'location', 'best');
 grid on;
 
 set(h,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[30 15], 'paperposition',[0 0 28 13]);
+
 saveas(h, strcat(resDir,'/figure-interactions-binary.pdf'));
 
 
@@ -213,22 +231,30 @@ res
 
 
 
+
 %%%%%
 %%%%% ordered categorical results
 
 rx = 'ORDERED-LOGISTIC';
-ix = find(strcmp(x.restypenever, rx)==1 & strcmp(x.restypeever, rx)==1);
 
+% different / no result in never smokers 
+ix = find(strcmp(x.restypenever, rx)~=1 & strcmp(x.restypeever, rx)==1);
+x(ix,:) 
+
+ix = find(strcmp(x.restypenever, rx)==1 & strcmp(x.restypeever, rx)==1);
 res = x(ix,:);
 res
 
 h=figure('units','inches','position',[.1 .1 10 8]); %4.8]);
+ax = gca;
+ax.FontSize=fontsizex;
 plot([0 size(res,1)+1], [0 0], '--', 'color', 'black');
 xlim([0 size(res,1)+1]);
-set(gca,'XTick',[1:size(res,1)]+0.3);
-set(gca,'XTickLabel', res.varLabel);
-set(gca,'fontsize',fontsizex);
-rotateXLabels(gca, 65);
+ylim([-0.1 0.1]);
+xticklabels(res.varLabel);
+xticks([1:size(res,1)]+0.3);
+xtickangle(55);
+
 xlabel('Field');
 ylabel('Log odds');
 

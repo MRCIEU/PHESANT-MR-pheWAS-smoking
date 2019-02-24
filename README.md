@@ -16,7 +16,7 @@ Millard, LAC, et al. MR-pheWAS with stratification and interaction: Searching fo
 
 ## Environment details
 
-I use the following language versions: R-3.3.1-ATLAS, State v14, and Matlab-r2015a.
+I use the following language versions: R-3.3.1-ATLAS, Stata v15, and Matlab-r2018a.
 
 The code uses some environment variables, which needs to be set in your linux environment. I set some permanently (that I'll use across projects), and some temporarily, that are relevant to just this project.
 

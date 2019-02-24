@@ -64,7 +64,7 @@
 
 	# axis range
 	xmin=0
-	xmax=max(rankProportionLog10)+1.8
+	xmax=max(rankProportionLog10)+0.1
 	ymin=0
 	ymax=max(threshold, max(pLog10))
 
@@ -80,7 +80,7 @@
 
 	###
 	### FDR threshold
-	threshold=-log10(0.05*12/16683)
+	threshold=-log10(0.05*12/16692)
 	# horizontal threshold line, dashed green
         segments(0, threshold, xmax, threshold, col='#800000',lty=4)
 
@@ -88,7 +88,7 @@
 	###
 	### ascending diagonal, dotted blue
 
-	minVal = min(max(rankProportionLog10), max(pLog10))
+	minVal = min(max(rankProportionLog10), max(pLog10))+0.1
 	segments(0, 0, minVal, minVal, col='#0066cc',lty=3)	
 
 	junk<- dev.off()

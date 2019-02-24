@@ -47,7 +47,7 @@ cat ${RES_DIR_I}/results-combinedI-18001.csv | grep -v 'varname' >> ${RES_DIR_I}
 This command takes the first header line, and sorts the remaining lines.
 
 ```bash
-(head -n1 ${RES_DIR}/results-21753/results-by-interaction-pvalue/results-combinedI-all.csv && tail -n +2 ${RES_DIR}/results-21753/results-by-interaction-pvalue/results-combinedI-all.csv | sort -t, -g -k13) > ${RES_DIR}/results-21753/results-by-interaction-pvalue/results-combinedI-all-sorted.csv
+(head -n1 ${RES_DIR}/results-21753/results-by-interaction-pvalue/results-combinedI-all.csv && tail -n +2 ${RES_DIR}/results-21753/results-by-interaction-pvalue/results-combinedI-all.csv | sort -t, -g -k18) > ${RES_DIR}/results-21753/results-by-interaction-pvalue/results-combinedI-all-sorted.csv
 ```
 
 5. Generate QQ plot using the interaction P values
