@@ -1,9 +1,13 @@
 
-## 1. Run PHESANT
+## 1. Run PHESANT to generate processed variables
 
-Run jobs in the `sample-all`, `subsample-ever` and `subsample-never` directories.
+Run jobs in the `sample-all-save` directory.
 
-## 2. Process results
+## 2. Test associations with derived variables
+
+Run jobs in the `all`, `ever` and `never` sub-directories of the `PHESANT-from-saved` directory.
+
+## 3. Process results
 
 In the `resultsProcessing` directory, run the following to combine results from multiple blue crystal jobs into a single results file, for the ever, never and whole subsamples, respectively.
 
@@ -14,15 +18,15 @@ sh resultsProcessingSensitivity-pcs-all.sh
 ```
 
 
-## 3. Plotting results
+## 4. Plotting results
 
 See `resultsPlots` directory.
 
-## 4. Identify results by interaction P value
+## 5. Identify results by interaction P value
 
 See `identifyInteractions` directory.
 
-## 5. Results for supplementary table
+## 6. Results for supplementary table
 
 Create results listings for supplementary tables and supplementary data file (containing complete list of results)
 
