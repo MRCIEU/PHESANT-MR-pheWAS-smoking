@@ -1,4 +1,4 @@
-* apps/stata14
+* apps/stata15
 
 local homeDir : env HOME
 local resDir = "`homeDir'/2017-PHESANT-smoking-interaction/results/"

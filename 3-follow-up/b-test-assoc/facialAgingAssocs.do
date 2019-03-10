@@ -1,4 +1,4 @@
-* apps/stata14
+* apps/stata15
 
 local resDir : env RES_DIR
 local dataDir : env PROJECT_DATA
@@ -17,9 +17,9 @@ count if facial_aging!=. & neverever==1
 
 
 hist csi
-graph export "`resDir'/results-21753/facialaging-followup/csi-hist.pdf"
+graph export "`resDir'/results-21753/facialaging-followup/csi-hist.pdf", replace
 hist smokescore 
-graph export "`resDir'/results-21753/facialaging-followup/smokescore-hist.pdf"
+graph export "`resDir'/results-21753/facialaging-followup/smokescore-hist.pdf", replace
 
 
 **

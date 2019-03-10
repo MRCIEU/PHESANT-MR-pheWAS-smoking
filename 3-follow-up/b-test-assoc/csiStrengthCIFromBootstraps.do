@@ -13,7 +13,7 @@ log using "`resDir'/results-21753/facialaging-followup/csi-strength-with-boots-c
 local resDir : env RES_DIR
 
 * beta from main regression of csi pheno on csi IV (plus covariates)
-local truebeta = 0.1040648
+local truebeta = 0.1053448
 
 insheet using "`resDir'/results-21753/facialaging-followup/csi-strength-boots.txt", clear
 

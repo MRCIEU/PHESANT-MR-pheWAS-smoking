@@ -1,11 +1,13 @@
-* apps/stata14
+* apps/stata15
+
+args ixStart ixEnd
 
 local homeDir : env HOME
 local resDir = "`homeDir'/2017-PHESANT-smoking-interaction/results/"
 local dataDir = "`homeDir'/2017-PHESANT-smoking-interaction/data/"
 
 
-log using "`resDir'/results-21753/facialaging-followup/csi-causal-estimate-with-boots.log", text replace
+log using "`resDir'/results-21753/facialaging-followup/csi-causal-estimate-with-boots`ixStart'.log", text replace
 
 insheet using "`dataDir'/phenotypes/derived/facialaging-dataset.csv", clear
 
@@ -65,11 +67,12 @@ program define myboots, rclass
 	restore
 end
 
-set seed 1234
+local thisseed=`ixStart'+1234
+set seed `thisseed'
 
-file open myfile using "`resDir'/results-21753/facialaging-followup/csi-causal-estimate-boots.txt", write replace
-file write myfile "bootn,bootbeta" _n
-forval i = 1/1000 {
+file open myfile using "`resDir'/results-21753/facialaging-followup/csi-causal-estimate-bootsx`ixStart'.txt", write replace
+*file write myfile "bootn,bootbeta" _n
+forval i = `ixStart'/`ixEnd' {
 	myboots
 	di r(bcsi)
 	file write myfile "`i',`r(bcsi)'" _n

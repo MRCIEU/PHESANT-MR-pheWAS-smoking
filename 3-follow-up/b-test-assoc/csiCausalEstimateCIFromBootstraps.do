@@ -1,4 +1,4 @@
-* apps/stata14
+* apps/stata15
 
 local resDir : env RES_DIR
 local dataDir : env PROJECT_DATA
@@ -13,7 +13,7 @@ log using "`resDir'/results-21753/facialaging-followup/csi-causal-estimate-with-
 local resDir : env RES_DIR
 
 * beta from IVprobit regression - i.e. not the odds we derive from this and in the paper but the original coef
-local truebeta = 0.1564251
+local truebeta = 0.1604706
 
 insheet using "`resDir'/results-21753/facialaging-followup/csi-causal-estimate-boots.txt", clear
 

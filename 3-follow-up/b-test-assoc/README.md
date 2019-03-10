@@ -4,7 +4,7 @@
 ## Facial aging analysis
 
 ```bash
-stata -b facialAgingAnalysis.do
+stata -b facialAgingAssocs.do
 ```
 
 
@@ -32,6 +32,13 @@ Generate bootstrap betas:
 
 ```bash
 qsub jcsicausaleffect.sh
+```
+
+Then combine boots
+
+```bash
+echo "bootn,bootbeta" > $RES_DIR/results-21753/facialaging-followup/csi-causal-estimate-boots.txt
+cat $RES_DIR/results-21753/facialaging-followup/csi-causal-estimate-bootsx*.txt >> $RES_DIR/results-21753/facialaging-followup/csi-causal-estimate-boots.txt
 ```
 
 Get CI from bootstraps:
