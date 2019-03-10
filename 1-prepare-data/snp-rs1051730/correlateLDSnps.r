@@ -3,10 +3,10 @@
 datadir=Sys.getenv('PROJECT_DATA')
 
 
-second = read.table(paste0('/snp/snp-withPhenIds-rs1051730.csv'), sep=',', header=1)
+second = read.table(paste0(datadir, '/snp/snp-withPhenIds-rs1051730.csv'), sep=',', header=1)
 dim(second)
 
-first = read.table(paste0('/data/snp/snp-withPhenIds-subset.csv'),sep=',', header=1)
+first = read.table(paste0(datadir, '/snp/snp-withPhenIds-subset.csv'),sep=',', header=1)
 dim(first)
 
 x = merge(first, second, by='userId')
